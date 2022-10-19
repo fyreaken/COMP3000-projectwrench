@@ -1,4 +1,4 @@
-# Project Wrench
+# COMP3000 - Project Wrench
 
 Project Wrench is a Game Dev project built using Unity and C#.
 
