@@ -1,9 +1,5 @@
-# COMP3000 - Project Wrench
+# COMP3000 - CONTINGENT
 
-Project Wrench is a Game Dev project built using Unity and C#.
+CONTINGENT is a multiplayer PVP TPS (third-person shooter) game where players can fight each other using a variety of deadly weapons in an online free for all deathmatch mode.
 
-Project aims to:
-
-1) Provide a tech demo of a 3D Platformer with movement and combat mechanics, weapons, enemies and explorable world.
-
-2) Demonstrate a variety of game mechanics in a 3D world and my own skills with game development.
+Using C#, Unity 2021.2.15f1 and the Alteruna Multiplayer SDK.
