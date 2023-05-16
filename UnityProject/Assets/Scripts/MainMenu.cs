@@ -1,54 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour //script for buttons that disable/enable Main Menu elements
 {
-	[SerializeField] public GameObject LOGO;
-	[SerializeField] public GameObject PLAY;
-    [SerializeField] public GameObject PLAY_BACK;
-	[SerializeField] public GameObject OPTIONS;
-    [SerializeField] public GameObject OPTIONS_LOGO;
-    [SerializeField] public GameObject OPTIONS_BACK;
-	[SerializeField] public GameObject QUIT;
+	[SerializeField] public GameObject MAIN_MENU;
+    [SerializeField] public Button CREATE_GAME;
+    [SerializeField] public GameObject OPTIONS_MENU;
     [SerializeField] public GameObject CONTROLS;
 	[SerializeField] public GameObject UIRoomMenu_Obj;
 
     public void Play(){
-        LOGO.SetActive(false);
-        PLAY.SetActive(false);
-        OPTIONS.SetActive(false);
-        QUIT.SetActive(false);
-        PLAY_BACK.SetActive(true);
+        MAIN_MENU.SetActive(false);
         UIRoomMenu_Obj.SetActive(true);
     }
 
     public void Play_Back(){
-        LOGO.SetActive(true);
-        PLAY.SetActive(true);
-        OPTIONS.SetActive(true);
-        QUIT.SetActive(true);
-        PLAY_BACK.SetActive(false);
+        MAIN_MENU.SetActive(true);
         UIRoomMenu_Obj.SetActive(false);
     }
 
     public void Options(){
-        LOGO.SetActive(false);
-        PLAY.SetActive(false);
-        OPTIONS.SetActive(false);
-        QUIT.SetActive(false);
-        OPTIONS_LOGO.SetActive(true);
-        OPTIONS_BACK.SetActive(true);
+        MAIN_MENU.SetActive(false);
+        OPTIONS_MENU.SetActive(true);
         CONTROLS.SetActive(true);
     }
 
     public void Options_Back(){
-        LOGO.SetActive(true);
-        PLAY.SetActive(true);
-        OPTIONS.SetActive(true);
-        QUIT.SetActive(true);
-        OPTIONS_LOGO.SetActive(false);
-        OPTIONS_BACK.SetActive(false);
+        MAIN_MENU.SetActive(true);
+        OPTIONS_MENU.SetActive(false);
         CONTROLS.SetActive(false);
     }
 

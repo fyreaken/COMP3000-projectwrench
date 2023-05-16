@@ -21,9 +21,9 @@ public class CharacterAiming : MonoBehaviour
     void Start()
     {
         _avatar = GetComponent<Alteruna.Avatar>(); //gets Alteruna avatar component
-
-        if (!_avatar.IsMe) //if the Player is not owned by the User, return, don't run remaining script
-            return;
+        
+        if (!_avatar.IsMe) //if Avatar is not owned by User
+            return;             //do not run script
 
         freelookcamera = CinemachineFreeLook.FindObjectOfType<CinemachineFreeLook>(); //gets freelookcamera object in Scene
         freelookcamera.LookAt = target.transform; //assigns a gameObject to the camera's LookAt field
@@ -35,8 +35,8 @@ public class CharacterAiming : MonoBehaviour
     }
 
     void Update() {
-        if (!_avatar.IsMe) //if the Player is not owned by the User, return, don't run remaining script
-            return;
+        if (!_avatar.IsMe) //if Avatar is not owned by User
+            return;             //do not run script
 
         UICanvas.SetActive(true); //enables Player UI (if user owns the Player object)
         //Username.SetActive(false);
@@ -56,9 +56,9 @@ public class CharacterAiming : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!_avatar.IsMe) //if the Player is not owned by the User, return, don't run remaining script
-            return;
-            
+        if (!_avatar.IsMe) //if Avatar is not owned by User
+            return;             //do not run script
+
         if (canMove == true){ //make sure that Player moves with its player Camera
             float yawCamera = mainCamera.transform.rotation.eulerAngles.y;
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, yawCamera, 0), turnSpeed * Time.fixedDeltaTime);

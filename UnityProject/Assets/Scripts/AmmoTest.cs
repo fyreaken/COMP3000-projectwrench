@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class AmmoTest : MonoBehaviour
 {
-    public GameObject ammocountText;
-    public int ammo = 0;
+    [SerializeField] public GameObject ammoText; //field for ammo Text gameobject
+    private PlayerShoot _playerShoot; //playerShoot gameobject
 
-    void Update()
-    {
-        if (Input.GetKey(KeyCode.Alpha1)){
-            ammo = ammo + 1;
-        }
-        ammocountText.GetComponent<TMPro.TextMeshProUGUI>().text = "" + ammo;
-    }
+    private void Start(){
+        _playerShoot = GetComponent<PlayerShoot>();
+    }       //gets playerShoot script on gameobject
+
+    private void Update(){
+        ammoText.GetComponent<TMPro.TextMeshProUGUI>().text = _playerShoot.ammo.ToString();
+    }               //updates Player Kills text with Player KillAmount value
 }

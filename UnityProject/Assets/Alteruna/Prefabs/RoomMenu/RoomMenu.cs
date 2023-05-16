@@ -34,6 +34,10 @@ public class RoomMenu : CommunicationBridge
 	[SerializeField] public GameObject PLAY_BACK; // back button for Lobby Menu
 	[SerializeField] public GameObject CONTROLS; // control scheme text that appears in the Options menu
 
+	[SerializeField] public int Oo = 0;
+
+	[SerializeField] public GameObject MAINMENU;
+
 	public bool AutomaticallyRefresh = true;
 	public float RefreshInterval = 5.0f;
 	
@@ -73,6 +77,7 @@ public class RoomMenu : CommunicationBridge
 			return;
 		}
 		
+		MAINMENU.SetActive(true);
 		StartButton.interactable = true;
 		LeaveButton.interactable = false;
 		
@@ -203,11 +208,9 @@ public class RoomMenu : CommunicationBridge
 	{
 		//this code executes after a user has JOINED a room (user is assigned a Player prefab and enters game world)
 		StartButton.interactable = false;
-		LeaveButton.interactable = true;
 		InGameLeaveButton_.interactable = true; // makes in-game pause menu button clickable
 		BG.SetActive(false); // disables main menu background
 		UIRoomMenu_Obj.SetActive(false); // disables Lobby Menu
-		PLAY_BACK.SetActive(false); // disables Lobby Menu back button
 		Crosshair_Obj.SetActive(true); // enables player crosshair
 		Cursor.visible = false; // disables cursor
 
@@ -225,12 +228,10 @@ public class RoomMenu : CommunicationBridge
 	{
 		//this code executes after a user has LEFT a room (user leaves game world and goes back to lobby menu)
 		StartButton.interactable = true;
-		LeaveButton.interactable = false;
 		InGameLeaveButton_.interactable = false;
 		BG.SetActive(true); // enables main menu background
 		InGameBG.SetActive(false); // disables in-game pause menu background
 		UIRoomMenu_Obj.SetActive(true); // enables Lobby Menu
-		PLAY_BACK.SetActive(true); // enables Lobby Menu back button
 		Crosshair_Obj.SetActive(false); // disables Crosshair
 		InGameTitleBar.SetActive(false); // disables in-game Room Title background
 		InGameLeaveButton.SetActive(false); // disables pause menu leave button
@@ -366,10 +367,7 @@ public class RoomMenu : CommunicationBridge
 	private void Update() {
 
 		if (Input.GetKeyDown(KeyCode.Escape)){ //if ESC button is pressed
-			InGameTitleBar.SetActive(!InGameTitleBar.activeSelf); //enables/disables pause menu Room Title background
-			InGameLeaveButton.SetActive(!InGameLeaveButton.activeSelf); //enables/disables pause menu Leave button
-			InGameBG.SetActive(!InGameBG.activeSelf); //enables/disables pause menu background
-			CONTROLS.SetActive(!CONTROLS.activeSelf); //enables/disables pause menu control scheme text
+			InGamePauseUI();
 			if (InGameBG.activeSelf == true){ //checks if element is active
 				Cursor.lockState = CursorLockMode.None; //unlocks mouse to application
 				Cursor.visible = true; //makes cursor visible
@@ -378,6 +376,13 @@ public class RoomMenu : CommunicationBridge
 				Cursor.visible = false; //hides cursor
 			}
 		}
+	}
+
+	private void InGamePauseUI() {
+		InGameTitleBar.SetActive(!InGameTitleBar.activeSelf); //toggles In-Game Room Title
+		InGameLeaveButton.SetActive(!InGameLeaveButton.activeSelf); //toggles In-Game Leave Button
+		InGameBG.SetActive(!InGameBG.activeSelf); //toggles In-Game background
+		CONTROLS.SetActive(!CONTROLS.activeSelf); //toggles control scheme
 	}
 
 	private struct RoomObject
